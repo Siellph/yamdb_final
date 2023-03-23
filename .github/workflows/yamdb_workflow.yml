@@ -30,6 +30,7 @@ jobs:
         cd infra_project/
         # запустить написанные разработчиком тесты
         python manage.py test
+
 build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -49,6 +50,7 @@ build_and_push_to_docker_hub:
         with:
           push: true
           tags: siellph/api_yamdb:latest
+
 deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
@@ -71,6 +73,7 @@ deploy:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
+            
 send_message:
   runs-on: ubuntu-latest
   needs: deploy
