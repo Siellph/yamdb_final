@@ -20,7 +20,9 @@ jobs:
         # установка flake8 и его плагинов
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         # установка зависимостей
-        pip install -r api_yamdb/requirements.txt 
+        pip install -r api_yamdb/requirements.txt
+        # запуск тестов практикума
+        pytest
 
     - name: Test with flake8 and django tests
       run: |
@@ -78,8 +80,6 @@ jobs:
               echo DEBUG=${{ secrets.DEBUG }} >> .env
               echo TIME_ZONE=${{ secrets.TIME_ZONE }} >> .env
               sudo docker-compose up -d
-              cd yamdb_final
-              pytest
               
   send_message:
     runs-on: ubuntu-latest
