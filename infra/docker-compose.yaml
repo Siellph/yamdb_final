@@ -7,6 +7,7 @@ services:
     env_file:
       - ./.env
   web:
+    image: siellph/api_yamdb:latest
     build: siellph/api_yamdb:latest
     restart: always
     volumes:
