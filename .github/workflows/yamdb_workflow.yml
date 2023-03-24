@@ -30,6 +30,7 @@ jobs:
         cd api_yamdb/
         # запустить написанные разработчиком тесты
         python manage.py test
+        pytest
 
   build_and_push_to_docker_hub:
       name: Push Docker image to Docker Hub
@@ -78,6 +79,8 @@ jobs:
               echo DEBUG=${{ secrets.DEBUG }} >> .env
               echo TIME_ZONE=${{ secrets.TIME_ZONE }} >> .env
               sudo docker-compose up -d
+              cd yamdb_final
+              pytest
               
   send_message:
     runs-on: ubuntu-latest
