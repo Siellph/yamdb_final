@@ -79,7 +79,7 @@ jobs:
               echo DEBUG=${{ secrets.DEBUG }} >> .env
               echo TIME_ZONE=${{ secrets.TIME_ZONE }} >> .env
               sudo docker-compose up -d
-              sudo docker system prune -a
+              sudo docker system prune -a -f
               
   send_message:
     runs-on: ubuntu-latest
